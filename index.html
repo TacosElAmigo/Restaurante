@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tacos El Amigo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5e1;
+            color: #5a3e36;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        header img {
+            width: 100px;
+            height: auto;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ff9800;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .banner {
+            text-align: center;
+            padding: 50px;
+            background-color: #ffcc80;
+        }
+        .banner img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        .menu {
+            text-align: center;
+            padding: 20px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            text-align: center;
+        }
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .order-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #d32f2f;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #5a3e36;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://www.facebook.com/tacos.elamigo.1">
+            <img src="Tacos El Amigo Proyecto/Logo.png" alt="Logo de Tacos el Amigo">
+        </a>        <h1>Tacos el Amigo</h1>
+    </header>
+    
+    <nav>
+        <a href="#menu">Menú</a>
+        <a href="#pedidos">Ordenar</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    
+    <section class="banner">
+        <h2>¡Los mejores tacos de la ciudad!</h2>
+        <img src="banner.jpg" alt="Imagen destacada de tacos">
+    </section>
+    
+    <section id="menu" class="menu">
+        <h2>Nuestro Menú</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="menu1xd.jpg" alt="Taco de carne asada">
+                <p>Taco de carne asada - $25</p>
+            </div>
+            <div class="menu-item">
+                <img src="menu2xd.jpg" alt="Taco al pastor">
+                <p>Taco al pastor - $20</p>
+            </div>
+            <div class="menu-item">
+                <img src="menu3xd.jpg" alt="Taco de barbacoa">
+                <p>Taco de barbacoa - $30</p>
+            </div>
+            <div class="menu-item">
+                <img src="menu4xd.jpg" alt="Taco de chorizo">
+                <p>Taco de chorizo - $22</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pedidos" class="menu">
+        <h2>Haz tu pedido</h2>
+        <a href="#" class="order-btn">Ordenar Ahora</a>
+    </section>
+    
+    <footer>
+        <p> &copy; Tacos El Amigo, Todos Los Derechos Reservados 2025 - 2026 </p>
+    </footer>
+</body>
+</html>
