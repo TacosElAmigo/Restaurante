@@ -12,6 +12,9 @@
             margin: 0;
             padding: 0;
             transition: background-color 0.5s, color 0.5s;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #000000;
@@ -72,19 +75,28 @@
             text-decoration: none;
             font-weight: bold;
         }
-        .banner {
+        .carousel-container {
             text-align: center;
-            padding: 50px;
+            padding: 20px;
             background-color: #ffcc80;
         }
-        .banner img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 33.33%;
+            height: auto;
+            border-radius: 10px;
+            display: none;
         }
         .menu {
             text-align: center;
             padding: 20px;
+            flex: 1;
         }
         .menu-grid {
             display: grid;
@@ -118,6 +130,7 @@
             color: white;
             text-align: center;
             padding: 15px;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -141,9 +154,16 @@
         <a href="#contacto">Contacto</a>
     </nav>
     
-    <section class="banner">
-        <h2>¡Los mejores tacos de la ciudad!</h2>
-        <img src="banner.jpg" alt="Imagen destacada de tacos">
+    <section class="carousel-container">
+        <h2>Estas son nuestras promociones</h2>
+        <div class="carousel">
+            <img src="promo1.jpg" alt="Promoción 1">
+            <img src="promo2.jpg" alt="Promoción 2">
+            <img src="promo3.jpg" alt="Promoción 3">
+            <img src="promo4.jpg" alt="Promoción 4">
+            <img src="promo5.jpg" alt="Promoción 5">
+            <img src="promo6.jpg" alt="Promoción 6">
+        </div>
     </section>
     
     <section id="menu" class="menu">
@@ -168,17 +188,12 @@
         </div>
     </section>
     
-    <section id="pedidos" class="menu">
-        <h2>Haz tu pedido</h2>
-        <a href="#" class="order-btn">Ordenar Ahora</a>
-    </section>
-    
     <footer>
         <p> &copy; Tacos El Amigo, Todos Los Derechos Reservados 2025 - 2026 </p>
     </footer>
-
+    
     <script>
-        function toggleTheme() {
+          function toggleTheme() {
             let body = document.body;
             let sun = document.querySelector('.sun');
             let moon = document.querySelector('.moon');
@@ -195,6 +210,17 @@
                 moon.style.transform = 'translateX(0)';
             }
         }
+        let index = 0;
+        function changeSlide() {
+            let slides = document.querySelectorAll('.carousel img');
+            slides.forEach(img => img.style.display = 'none');
+            for (let i = 0; i < 3; i++) {
+                slides[(index + i) % slides.length].style.display = 'inline';
+            }
+            index = (index + 3) % slides.length;
+        }
+        setInterval(changeSlide, 3000);
+        changeSlide();
     </script>
 </body>
 </html>
