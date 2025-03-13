@@ -11,16 +11,54 @@
             color: #5a3e36;
             margin: 0;
             padding: 0;
+            transition: background-color 0.5s, color 0.5s;
         }
         header {
             background-color: #000000;
             color: white;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px;
+            position: relative;
+        }
+        header h1 {
+            flex: 1;
+            text-align: center;
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         header img {
-            width: 100px;
+            width: 150px;
             height: auto;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 50px;
+            height: 30px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .theme-toggle span {
+            position: absolute;
+            transition: transform 0.5s;
+        }
+        .theme-toggle .sun {
+            left: 0;
+        }
+        .theme-toggle .moon {
+            right: 0;
+            transform: translateX(100%);
         }
         nav {
             display: flex;
@@ -85,10 +123,16 @@
 </head>
 <body>
     <header>
-        <a href="https://www.facebook.com/tacos.elamigo.1">
-            <img src="Logo.png" alt="Logo de Tacos el Amigo">
-        </a>
         <h1>Tacos el Amigo</h1>
+        <div class="logo-container">
+            <a href="https://www.facebook.com/tacos.elamigo.1">
+                <img src="Logo.png" alt="Logo de Tacos el Amigo">
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="sun">🌮</span>
+                <span class="moon">🌙</span>
+            </button>
+        </div>
     </header>
     
     <nav>
@@ -132,5 +176,25 @@
     <footer>
         <p> &copy; Tacos El Amigo, Todos Los Derechos Reservados 2025 - 2026 </p>
     </footer>
+
+    <script>
+        function toggleTheme() {
+            let body = document.body;
+            let sun = document.querySelector('.sun');
+            let moon = document.querySelector('.moon');
+            
+            if (body.style.backgroundColor === 'black') {
+                body.style.backgroundColor = '#fff5e1';
+                body.style.color = '#5a3e36';
+                sun.style.transform = 'translateX(0)';
+                moon.style.transform = 'translateX(100%)';
+            } else {
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                sun.style.transform = 'translateX(-100%)';
+                moon.style.transform = 'translateX(0)';
+            }
+        }
+    </script>
 </body>
 </html>
