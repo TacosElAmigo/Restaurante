@@ -137,6 +137,35 @@
     color: #000000;
     text-shadow: 0 0 4px #ff9800, 0 0 8px #ff9800, 0 0 12px #ff9800, 0 0 16px #ff9800, 0 0 20px #ff9800, 0 0 24px #ff9800;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -175,21 +204,25 @@
         <h2>Nuestro Menú</h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="./Tacos/asada.png" alt="Taco de carne asada">
+                <img src="./Tacos/asada.png" alt="Taco de carne asada" onclick="abrirModal(this)">
                 <p>Taco de carne asada - $</p>
             </div>
             <div class="menu-item">
-                <img src="./Tacos/pastor.png" alt="Taco al pastor">
+                <img src="./Tacos/pastor.png" alt="Taco al pastor" onclick="abrirModal(this)">
                 <p>Taco al pastor - $</p>
             </div>
             <div class="menu-item">
-                <img src="./Tacos/arabes.png" alt="Taco Arabes">
+                <img src="./Tacos/arabes.png" alt="Taco Arabes" onclick="abrirModal(this)">
                 <p>Tacos Arabes - $</p>
             </div>
             <div class="menu-item">
-                <img src="./Tacos/chorizo.png" alt="Taco de chorizo">
+                <img src="./Tacos/chorizo.png" alt="Taco de chorizo" onclick="abrirModal(this)">
                 <p>Taco de chorizo - $</p>
             </div>
+        </div>
+        <div id="modalImagen" class="modal" onclick="cerrarModal()">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <img id="imagenAmpliada" src="" alt="Imagen Ampliada" onclick="event.stopPropagation()">
         </div>
     </section>
     
@@ -226,6 +259,16 @@
         }
         setInterval(changeSlide, 3000);
         changeSlide();
+        function abrirModal(imagen) {
+        var modal = document.getElementById("modalImagen");
+        var imagenAmpliada = document.getElementById("imagenAmpliada");
+        imagenAmpliada.src = imagen.src;
+        modal.style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.getElementById("modalImagen").style.display = "none";
+    }
     </script>
 </body>
 </html>
