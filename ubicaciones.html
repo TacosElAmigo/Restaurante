@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.ico">
+    <title>Ubícanos - Tacos El Amigo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+        }
+        nav img {
+            height: 125px;
+            cursor: pointer;
+        }
+        .location {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffcc80, #ff9800);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        details {
+            background-color: #5a3e36;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            max-width: 400px;
+            margin: 10px auto;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        footer {
+            background-color: #5a3e36;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+        }
+        header h1 {
+            margin: 0;
+            color: #000000;
+            text-shadow: 
+                0 0 5px #ff9800, 
+                0 0 10px #ff9800, 
+                0 0 15px #ff9800, 
+                0 0 20px #ff9800, 
+                0 0 30px #ff9800, 
+                0 0 40px #ff9800, 
+                0 0 50px #ff9800, 
+                0 0 75px #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tacos El Amigo</h1>
+        <nav>
+            <a href="index.html">
+                <img src="Logo.ico" alt="Tacos El Amigo">
+            </a>
+        </nav>
+    </header>
+    <section class="location">
+        <h2>Ubícanos</h2>
+        <p>Encuéntranos fácilmente con el mapa interactivo y nuestra información de contacto.</p>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!4v1742748741690!6m8!1m7!1ssvwrEsSR6ZqNLb5XntbFYQ!2m2!1d18.60714392264017!2d-98.46632635140278!3f241.47155468380907!4f-4.4525494876868805!5f0.7820865974627469" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <h3>Nuestra Información</h3>
+        <p><strong>Dirección:</strong> Internacional A Oaxaca (AVENIDA Oaxaca) 55 San Juan Coahuixtla, 74480 Izúcar de Matamoros, Puebla</p>
+        <p><strong>Teléfono:</strong> +52 55 1234 5678</p>
+
+        <details>
+            <summary>Horarios de Atención</summary>
+            <div id="horarios"></div>
+        </details>
+    </section>
+    <footer>
+        <p>&copy; 2025 Tacos El Amigo - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        const horarios = [
+            { dia: "Lunes", horario: "1:00 PM - 2:00 AM" },
+            { dia: "Martes", horario: "1:00 PM - 2:00 AM" },
+            { dia: "Miércoles", horario: "1:00 PM - 2:00 AM" },
+            { dia: "Jueves", horario: "1:00 PM - 2:00 AM" },
+            { dia: "Viernes", horario: "1:00 PM - 3:00 AM" },
+            { dia: "Sábado", horario: "12:00 PM - 3:00 AM" },
+            { dia: "Domingo", horario: "12:00 PM - 2:00 AM" }
+        ];
+        
+        function actualizarHorarios() {
+            const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const hoy = new Date().getDay();
+            const horariosOrdenados = [...horarios.slice(hoy), ...horarios.slice(0, hoy)];
+            
+            const contenedorHorarios = document.getElementById("horarios");
+            contenedorHorarios.innerHTML = "";
+            
+            horariosOrdenados.forEach(horario => {
+                const p = document.createElement("p");
+                p.innerHTML = `<strong>${horario.dia}:</strong> ${horario.horario}`;
+                contenedorHorarios.appendChild(p);
+            });
+        }
+        
+        actualizarHorarios();
+    </script>
+</body>
+</html>

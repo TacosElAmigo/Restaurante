@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.ico">
+    <title>Opinión de Clientes - Tacos El Amigo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+        }
+        nav img {
+            height: 125px;
+            cursor: pointer;
+        }
+        .opiniones {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffcc80, #ff9800);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        input, textarea, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            background-color: #5a3e36;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .opiniones-lista {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #5a3e36;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+        footer {
+            background-color: #5a3e36;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+        }
+        header h1 {
+            margin: 0;
+            color: #000000;
+            text-shadow: 
+                0 0 5px #ff9800, 
+                0 0 10px #ff9800, 
+                0 0 15px #ff9800, 
+                0 0 20px #ff9800, 
+                0 0 30px #ff9800, 
+                0 0 40px #ff9800, 
+                0 0 50px #ff9800, 
+                0 0 75px #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tacos El Amigo</h1>
+        <nav>
+            <a href="index.html">
+                <img src="Logo.ico" alt="Tacos El Amigo">
+            </a>
+        </nav>
+    </header>
+    <section class="opiniones">
+        <h2>Opinión de Clientes</h2>
+        <p>Comparte tu experiencia con nosotros y revisa lo que otros clientes han dicho.</p>
+        <div class="formulario">
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <textarea id="opinion" placeholder="Escribe tu opinión aquí..." rows="4" required></textarea>
+            <button onclick="agregarOpinion()">Enviar Opinión</button>
+        </div>
+        <h3>Opiniones Recientes</h3>
+        <div class="opiniones-lista" id="opinionesLista"></div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Tacos El Amigo - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        function cargarOpiniones() {
+            const opiniones = JSON.parse(localStorage.getItem("opiniones")) || [];
+            const lista = document.getElementById("opinionesLista");
+            lista.innerHTML = "";
+            opiniones.forEach(op => {
+                const div = document.createElement("div");
+                div.innerHTML = `<strong>${op.nombre}:</strong> ${op.opinion}`;
+                lista.appendChild(div);
+            });
+        }
+        function agregarOpinion() {
+            const nombre = document.getElementById("nombre").value.trim();
+            const opinion = document.getElementById("opinion").value.trim();
+            if (nombre && opinion) {
+                const opiniones = JSON.parse(localStorage.getItem("opiniones")) || [];
+                opiniones.unshift({ nombre, opinion });
+                localStorage.setItem("opiniones", JSON.stringify(opiniones));
+                document.getElementById("nombre").value = "";
+                document.getElementById("opinion").value = "";
+                cargarOpiniones();
+            }
+        }
+        cargarOpiniones();
+    </script>
+</body>
+</html>
