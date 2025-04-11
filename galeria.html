@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Logo.ico">
-    <title>Pedido a Domicilio - Tacos El Amigo</title>
+    <title>Opinión de Clientes - Tacos El Amigo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,7 +35,7 @@
             height: 125px;
             cursor: pointer;
         }
-        .pedido {
+        .opiniones {
             max-width: 800px;
             margin: 40px auto;
             padding: 30px;
@@ -44,14 +44,13 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        form {
+        .formulario {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            text-align: left;
+            margin-top: 20px;
         }
-        input, select, textarea {
-            width: 100%;
+        input, textarea, button {
             padding: 10px;
             border-radius: 5px;
             border: none;
@@ -60,11 +59,18 @@
         button {
             background-color: #5a3e36;
             color: white;
-            padding: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+        }
+        .opiniones-lista {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #5a3e36;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
         }
         footer {
             background-color: #5a3e36;
@@ -86,38 +92,87 @@
                 0 0 50px #ff9800, 
                 0 0 75px #ff9800;
         }
+        .galeria {
+            text-align: center;
+        }
+        .carousel-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcc80;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .carousel-container h1 {
+            font-size: 28px;
+            color: #5a3e36;
+            margin-bottom: 20px;
+        }
+
+        .carousel {
+            display: flex;
+            width: 50%;
+            max-width: 600px;
+            animation: scroll 15s linear infinite;
+            gap: 20px;
+        }
+
+        .carousel img {
+            width: 20%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            33.33% { transform: translateX(-100%); }
+            66.66% { transform: translateX(-200%); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Tacos El Amigo</h1>
+        <div>
         <nav>
             <a href="index.html">
                 <img src="Logo.ico" alt="Tacos El Amigo">
             </a>
         </nav>
     </header>
-    <section class="pedido">
-        <h2>Pedido a Domicilio</h2>
-        <p>Haz tu pedido y disfruta de nuestros deliciosos tacos en casa.</p>
-        <p>El pago se realiza de forma fisica.</p>
-        <form id="formPedido" action="https://formspree.io/f/xwplqken" method="POST">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" required>
-            
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
-            
-            <label for="pedido">Pedido:</label>
-            <textarea id="pedido" name="pedido" rows="4" required></textarea>
-            
-            <button type="submit">Realizar Pedido</button>
-        </form>
-        <p id="mensaje"></p>
-    </section>
+    <h1 class="galeria">Galeria</h1>
+    <div class="carousel-container">
+        <h1>Nuestros Deliciosos Tacos</h1>
+        <div class="carousel">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+            <img src="./Logo.png">
+        </div>
+    </div>
+    
+    <div class="ft1">
+
+    </div>
     <footer>
         <p>&copy; 2025 Tacos El Amigo - Todos los derechos reservados</p>
     </footer>
